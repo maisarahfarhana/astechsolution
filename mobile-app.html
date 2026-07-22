@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Development | astechsolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .phone-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0f1d] text-gray-200 font-sans antialiased overflow-x-hidden">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#0a0f1d]/90 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">astech<span class="text-sky-400">solution</span></a>
+            <a href="index.html" class="text-sm text-gray-400 hover:text-sky-400 transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main class="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto flex flex-col justify-center relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full mb-12">
+            
+            <!-- Left Column: Single Phone Mockup with Animation and Mac Dots -->
+            <div class="relative flex flex-col items-center justify-center">
+                <div class="phone-float w-full max-w-[280px] bg-[#1e293b] p-3 rounded-[32px] shadow-2xl border-4 border-gray-700/60 relative z-10">
+                    <!-- Mac Window Top Bar Dots -->
+                    <div class="flex items-center space-x-2 mb-3 px-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <!-- Phone Screen Content -->
+                    <div class="bg-black rounded-[24px] overflow-hidden border border-gray-800 relative">
+                        <!-- Camera Notch -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl z-20"></div>
+                        <!-- App Image Container -->
+                        <div class="w-full h-full overflow-hidden pt-4">
+                            <img src="renaireward-app.jpg" alt="Mobile App Preview" class="w-full h-auto block object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Text and E-Commerce Button Vertically Centered -->
+            <div class="flex flex-col justify-center">
+                <h1 class="text-4xl md:text-5xl font-serif italic font-normal tracking-tight mb-6 text-white">
+                    Mobile App Development
+                </h1>
+                
+                <div class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                    <p>
+                        We are a <strong class="text-white font-semibold">mobile app development company</strong> in Malaysia that helps our clients in <strong class="text-white font-semibold">designing and developing mobile applications for IOS, Android and Huawei</strong>. With our expertise in mobile architecture and design, our <strong class="text-white font-semibold">App developers</strong> will make sure that your mobile app meets your strategic goals from the start till the end.
+                    </p>
+                    <p>
+                        Harness unprecedented visibility by placing your brand at the center of a user's digital world. A successful mobile app puts you at the user's fingertips, on the one device they use more than any other. Whether it's for consumers, businesses or your staff, mobile apps exist for convenience.
+                    </p>
+                    <p>
+                        You want to make their experience effortless, with easy UI, simple functionality, smooth integration and decent loading speeds, so that your mobile app works seamlessly. As the top mobile app development service providers, we allow our clients to fully customize a mobile app with their creative and unique idea.
+                    </p>
+                </div>
+
+                <!-- Navigation Buttons right below the text -->
+                <div>
+                    <div class="border-t border-gray-800 mb-6"></div>
+                    <div class="flex justify-between items-center text-sm font-bold text-gray-300">
+                        <a href="web-design.html" class="flex items-center gap-2 hover:text-sky-400 transition">
+                            <i class="fa-solid fa-chevron-left text-sky-400 text-xs"></i> Web Design Services
+                        </a>
+                        <a href="ecommerce.html" class="flex items-center gap-2 hover:text-sky-400 transition">
+                            E-Commerce Web Design <i class="fa-solid fa-chevron-right text-sky-400 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Estimator | astechsolution</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0f1d',
+                        cardbg: '#131b2e',
+                        accent: '#38bdf8',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-accent selection:text-darkbg">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
+                astech<span class="text-accent">solution</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html#about" class="hover:text-accent transition">About</a>
+                <a href="index.html#services" class="hover:text-accent transition">Services</a>
+                <a href="index.html#projects" class="hover:text-accent transition">Portfolio</a>
+                <a href="estimator.html" class="text-accent font-semibold">Cost Estimator</a>
+            </div>
+            <a href="index.html#contact" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-accent text-darkbg font-semibold hover:bg-sky-400 transition">
+                Let's Talk
+            </a>
+        </div>
+    </nav>
+
+    <!-- ESTIMATOR HEADER -->
+    <header class="pt-32 pb-8 px-6 max-w-4xl mx-auto text-center">
+        <span class="text-xs uppercase tracking-widest text-accent font-semibold">Interactive Pricing & Planning Tool</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 mb-4">
+            Project Scope & <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Cost Estimator</span>
+        </h1>
+        <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            Define your project scope, choose your platform, and calculate an instant estimated budget.
+        </p>
+    </header>
+
+    <!-- ESTIMATOR CALCULATOR CONTAINER -->
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        <div class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- OPTIONS SELECTION (2 Columns) -->
+            <div class="md:col-span-2 space-y-8">
+                
+                <!-- STEP 1: Project Scope Description -->
+                <div>
+                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-2">1. Project Scope & Objectives</label>
+                    <p class="text-xs text-gray-500 mb-3">Briefly describe what you want to build (e.g., goals, target audience, core features).</p>
+                    <textarea id="projectScopeInput" rows="3" placeholder="e.g., I want an inventory system for hotel supplies with secure admin login..." class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"></textarea>
+                </div>
+
+                <!-- STEP 2: Project Type (App / Website / Landing Page) -->
+                <div>
+                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-3">2. Select Platform / Solution Type</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center mb-2">
+                                <input type="radio" name="projectType" value="1200" onchange="calculateTotal()" class="accent-sky-400 mr-2">
+                                <span class="font-semibold text-xs">Landing Page</span>
+                            </div>
+                            <span class="text-xs text-gray-500">From RM 1,200</span>
+                        </label>
+                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center mb-2">
+                                <input type="radio" name="projectType" value="2500" checked onchange="calculateTotal()" class="accent-sky-400 mr-2">
+                                <span class="font-semibold text-xs">Full Website</span>
+                            </div>
+                            <span class="text-xs text-gray-500">From RM 2,500</span>
+                        </label>
+                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center mb-2">
+                                <input type="radio" name="projectType" value="4500" onchange="calculateTotal()" class="accent-sky-400 mr-2">
+                                <span class="font-semibold text-xs">Mobile App</span>
+                            </div>
+                            <span class="text-xs text-gray-500">From RM 4,500</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Add-on Features -->
+                <div>
+                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-3">3. Additional Features</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center">
+                                <input type="checkbox" value="800" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4">
+                                <span class="text-sm font-medium">Custom Backend & Database (Node.js/SQL)</span>
+                            </div>
+                            <span class="text-xs font-mono text-accent">+RM 800</span>
+                        </label>
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center">
+                                <input type="checkbox" value="1200" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4">
+                                <span class="text-sm font-medium">Cross-Platform Support (Flutter)</span>
+                            </div>
+                            <span class="text-xs font-mono text-accent">+RM 1,200</span>
+                        </label>
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
+                            <div class="flex items-center">
+                                <input type="checkbox" value="500" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4">
+                                <span class="text-sm font-medium">Advanced UI Animations & Effects</span>
+                            </div>
+                            <span class="text-xs font-mono text-accent">+RM 500</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUMMARY BOX (1 Column) -->
+            <div class="bg-darkbg border border-gray-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-4">Estimated Investment</h3>
+                    <div class="text-3xl font-extrabold text-accent mb-2" id="totalPrice">RM 2,500</div>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Preliminary quote based on your selected scope and platform requirements.</p>
+                </div>
+                <button onclick="sendInquiry()" class="w-full py-3.5 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition text-sm shadow-lg shadow-sky-500/10">
+                    Send Inquiry With Scope
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        <p>&copy; 2026 astechsolution. All rights reserved.</p>
+    </footer>
+
+    <!-- ESTIMATOR SCRIPT -->
+    <script>
+        function calculateTotal() {
+            const projectType = document.querySelector('input[name="projectType"]:checked');
+            let total = projectType ? parseInt(projectType.value) : 0;
+
+            const checkboxes = document.querySelectorAll('.feature-checkbox:checked');
+            checkboxes.forEach(box => {
+                total += parseInt(box.value);
+            });
+
+            document.getElementById('totalPrice').innerText = 'RM ' + total.toLocaleString();
+        }
+
+        function sendInquiry() {
+            const scope = document.getElementById('projectScopeInput').value.trim();
+            const projectTypeElem = document.querySelector('input[name="projectType"]:checked');
+            const total = document.getElementById('totalPrice').innerText;
+            
+            // Collect selected features
+            let features = [];
+            document.querySelectorAll('.feature-checkbox:checked').forEach(cb => {
+                features.push(cb.nextElementSibling.innerText);
+            });
+
+            if (!scope) {
+                alert('Please fill in your project scope and objectives before submitting.');
+                document.getElementById('projectScopeInput').focus();
+                return;
+            }
+
+            // Redirect back to main page contact section or show success alert
+            alert(`Thank you! Your scope and estimate (${total}) have been captured.\n\nRedirecting to contact form...`);
+            window.location.href = 'index.html#contact';
+        }
+    </script>
+</body>
+</html>
