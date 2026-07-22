@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>astechsolution | Custom Web & Software Development</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0f1d',
+                        cardbg: '#131b2e',
+                        accent: '#38bdf8',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Attractive Serif Heading Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-accent selection:text-darkbg">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
+                astech<span class="text-accent">solution</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="index.html" class="hover:text-accent transition">Home</a>
+                <a href="index.html#about" class="hover:text-accent transition">About</a>
+                
+                <!-- SERVICES DROPDOWN MENU -->
+                <div class="relative group py-4">
+                    <button class="flex items-center gap-1 hover:text-accent transition focus:outline-none">
+                        Services <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <!-- Dropdown Box linking to dedicated separate pages -->
+                    <div class="absolute top-full left-0 w-64 bg-cardbg border border-gray-800 rounded-xl shadow-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="web-design.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Web Design & Landing Pages</a>
+                        <a href="ecommerce.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">E-Commerce</a>
+                        <a href="mobile-app.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Mobile App Development (Flutter)</a>
+                        <a href="backend.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Backend & Database Architecture</a>
+                        <a href="estimator.html" class="block px-5 py-2.5 text-sm text-accent font-semibold hover:bg-darkbg transition border-t border-gray-800 mt-1 pt-2.5">
+                            <i class="fa-solid fa-calculator mr-2"></i> Cost Estimator
+                        </a>
+                    </div>
+                </div>
+
+                <a href="index.html#projects" class="hover:text-accent transition">Portfolio</a>
+                <a href="index.html#process" class="hover:text-accent transition">Process</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="estimator.html" class="hidden lg:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent border border-accent/30 px-4 py-2 rounded-full hover:bg-accent/10 transition">
+                    <i class="fa-solid fa-calculator"></i> Cost Calculator
+                </a>
+                <a href="index.html#contact" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-accent text-darkbg font-semibold hover:bg-sky-400 transition">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.07)_0,transparent_70%)]"></div>
+        <div class="max-w-4xl mx-auto text-center z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cardbg border border-gray-800 mb-6">
+                <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+                <span class="text-xs uppercase tracking-widest text-gray-400">Custom Software & Web Development</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Building Digital Infrastructure & <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Scalable Web Solutions</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                We transform your ideas into robust, lightning-fast, and custom-coded digital platforms that build immediate customer trust.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projects" class="px-8 py-4 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition shadow-lg shadow-sky-500/20">
+                    Explore Our Work
+                </a>
+                <a href="estimator.html" class="px-8 py-4 rounded-xl bg-cardbg border border-gray-800 hover:border-accent transition font-medium flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calculator text-accent"></i> Estimate Project Cost
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- TECH STACK TICKER -->
+    <div class="py-10 border-y border-gray-800/60 bg-darkbg/40 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs tracking-widest text-gray-500 uppercase mb-4">Core Technologies We Master</div>
+        <div class="flex justify-center gap-8 md:gap-16 text-gray-400 text-lg font-semibold flex-wrap px-6">
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-node-js text-2xl"></i> Node.js</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-react text-2xl"></i> React / Next.js</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-2xl"></i> Flutter</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-database text-2xl"></i> SQL & Databases</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-network-wired text-2xl"></i> Networking & APIs</span>
+        </div>
+    </div>
+
+    <!-- WHY ASTECHSOLUTION SECTION -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-serif-title italic tracking-wide text-white mb-4">
+                Why <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">astechsolution</span>
+            </h2>
+            <p class="text-gray-400 max-w-xl mx-auto">What sets us apart in delivering exceptional software and digital experiences.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Item 1 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">Fully Customised Solution</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Get a fully customised web design or mobile application built from scratch to best suit your unique business needs.
+                </p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">All-In-One Programming Factory</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Starting from domain setup and hosting to full-stack development and APIs, we provide end-to-end service to digitalise your business.
+                </p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">Dedicated Support Team</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Our trained support team will assist you whenever you have inquiries or technical maintenance requests.
+                </p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">Industry Experience</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    We bring practical expertise in serving various technical stacks and system requirements across different project scopes.
+                </p>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">Result-Orientated</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    We are determined to provide our very best service and assist you to achieve performance metrics and operational results.
+                </p>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="text-center p-6 group">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-cardbg border border-gray-800 text-accent flex items-center justify-center text-2xl mb-6 group-hover:border-accent transition group-hover:scale-110">
+                    <i class="fa-solid fa-face-smile"></i>
+                </div>
+                <h3 class="text-lg font-bold tracking-wide uppercase mb-3 text-white">Full Load Of Satisfaction</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Your satisfaction is our priority! Rest assured you will be fully satisfied with our clean code and deliverables.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR SERVICES SECTION (BRIGHT & CLEAR BACKGROUND IMAGES) -->
+    <section id="services" class="py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-gray-800/60 overflow-hidden">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-serif-title italic tracking-wide text-white mb-4">
+                Our <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Services</span>
+            </h2>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">Through our services, astechsolution provides top web design and digital solutions that help you grow your business.</p>
+            <h3 class="text-xs md:text-sm uppercase tracking-[0.25em] text-accent font-bold mt-6">What We Provide</h3>
+        </div>
+
+        <!-- Tilted Cards Grid Layout (5 Items with High Brightness Images) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center justify-center max-w-6xl mx-auto">
+            
+            <!-- Card 1: Web Design Services -->
+            <a href="web-design.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:-rotate-3">
+                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center px-4">
+                    <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Web Design Services</h4>
+                </div>
+            </a>
+
+            <!-- Card 2: Mobile App Development -->
+            <a href="mobile-app.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-2">
+                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center px-4">
+                    <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Mobile App Development</h4>
+                </div>
+            </a>
+
+            <!-- Card 3: E-Commerce -->
+            <a href="ecommerce.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:-rotate-2">
+                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center px-4">
+                    <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">E-Commerce</h4>
+                </div>
+            </a>
+
+            <!-- Card 4: Backend Development -->
+            <a href="backend.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-1">
+                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center px-4">
+                    <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Backend Development</h4>
+                </div>
+            </a>
+
+            <!-- Card 5: Domain and Web Hosting Services -->
+            <a href="estimator.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-3">
+                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center px-4">
+                    <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Domain and Web Hosting Services</h4>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto border-t border-gray-800/60">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+            <p class="text-gray-400 max-w-xl mx-auto">Explore some of our recent development builds and architectural solutions.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project 1 -->
+            <div class="rounded-2xl bg-cardbg border border-gray-800 overflow-hidden group">
+                <div class="h-56 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <span class="text-gray-500 font-mono tracking-widest text-sm">Project Preview Mockup</span>
+                </div>
+                <div class="p-8">
+                    <span class="text-xs uppercase tracking-widest text-accent font-semibold">Mobile App Platform</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-3">RenaiReward System</h3>
+                    <p class="text-gray-400 text-sm mb-6">A loyalty and engagement mobile architecture built with Flutter and local state persistence to reward user interaction.</p>
+                    <div class="flex gap-2 flex-wrap mb-6">
+                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Flutter</span>
+                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">SQLite</span>
+                    </div>
+                    <a href="#contact" class="text-sm font-semibold text-accent hover:underline flex items-center gap-2">Request Case Study <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="rounded-2xl bg-cardbg border border-gray-800 overflow-hidden group">
+                <div class="h-56 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <span class="text-gray-500 font-mono tracking-widest text-sm">Project Preview Mockup</span>
+                </div>
+                <div class="p-8">
+                    <span class="text-xs uppercase tracking-widest text-accent font-semibold">Web & Network Architecture</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-3">Enterprise Multi-Server Chat</h3>
+                    <p class="text-gray-400 text-sm mb-6">A real-time communication platform utilizing Node.js, Socket.io, and Redis with port failover capabilities.</p>
+                    <div class="flex gap-2 flex-wrap mb-6">
+                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Socket.io</span>
+                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Redis</span>
+                    </div>
+                    <a href="#contact" class="text-sm font-semibold text-accent hover:underline flex items-center gap-2">Request Case Study <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEVELOPMENT PROCESS SECTION -->
+    <section id="process" class="py-24 px-6 max-w-7xl mx-auto border-t border-gray-800/60">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Development Lifecycle</h2>
+            <p class="text-gray-400 max-w-xl mx-auto">Transparent milestones to ensure project success from day one.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">01</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Requirement</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Understanding your business model and technical requirements.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">02</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Design & Architecture</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Mapping out database schemas and user interface mockups.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">03</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Development</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Clean code implementation with continuous testing loops.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">04</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Deployment</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Launching live to production with complete handover support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6 max-w-3xl mx-auto border-t border-gray-800/60">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Together</h2>
+            <p class="text-gray-400">Ready to start your digital journey? Send us a message below.</p>
+        </div>
+        <form onsubmit="handleSubmit(event)" class="space-y-6 bg-cardbg p-8 md:p-10 rounded-2xl border border-gray-800">
+            <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Your Name</label>
+                <input type="text" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
+            </div>
+            <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Email Address</label>
+                <input type="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
+            </div>
+            <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Project Details</label>
+                <textarea rows="4" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition shadow-lg shadow-sky-500/20">
+                Send Message
+            </button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        <p>&copy; 2026 astechsolution. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTION SCRIPT -->
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent Successfully!';
+            btn.classList.remove('bg-accent', 'hover:bg-sky-400');
+            btn.classList.add('bg-emerald-500', 'text-white');
+            setTimeout(() => {
+                e.target.reset();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
