@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>astechsolution | Custom Web & Software Development</title>
+    <title>astechsolution | Gallery Showcase</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,11 +21,58 @@
     </script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts for Attractive Serif Heading Look -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     <style>
         .font-serif-title {
             font-family: 'Playfair Display', serif;
+        }
+
+        /* 3D Carousel Container Styling */
+        .carousel-container {
+            perspective: 1000px;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scrollCarousel 25s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollCarousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .carousel-card {
+            width: 220px;
+            height: 320px;
+            flex-shrink: 0;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            filter: brightness(1) contrast(1);
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -37,80 +84,107 @@
             <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
                 astech<span class="text-accent">solution</span>
             </a>
+            
+            <!-- Menu Links with Cost Estimator -->
             <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
                 <a href="index.html" class="hover:text-accent transition">Home</a>
-                <a href="index.html#about" class="hover:text-accent transition">About</a>
-                
-                <!-- SERVICES DROPDOWN MENU -->
-                <div class="relative group py-4">
-                    <button class="flex items-center gap-1 hover:text-accent transition focus:outline-none">
-                        Services <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </button>
-                    <!-- Dropdown Box linking to dedicated separate pages -->
-                    <div class="absolute top-full left-0 w-64 bg-cardbg border border-gray-800 rounded-xl shadow-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                        <a href="web-design.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Web Design & Landing Pages</a>
-                        <a href="ecommerce.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">E-Commerce</a>
-                        <a href="mobile-app.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Mobile App Development (Flutter)</a>
-                        <a href="backend.html" class="block px-5 py-2.5 text-sm text-gray-300 hover:bg-darkbg hover:text-accent transition">Backend & Database Architecture</a>
-                        <a href="estimator.html" class="block px-5 py-2.5 text-sm text-accent font-semibold hover:bg-darkbg transition border-t border-gray-800 mt-1 pt-2.5">
-                            <i class="fa-solid fa-calculator mr-2"></i> Cost Estimator
-                        </a>
-                    </div>
-                </div>
-
-                <a href="index.html#projects" class="hover:text-accent transition">Portfolio</a>
-                <a href="index.html#process" class="hover:text-accent transition">Process</a>
+                <a href="#about" class="hover:text-accent transition">About</a>
+                <a href="#services" class="hover:text-accent transition">Services</a>
+                <a href="#process" class="hover:text-accent transition">Process</a>
+                <a href="estimator.html" class="hover:text-accent transition">Cost Estimator</a>
             </div>
+
             <div class="flex items-center gap-4">
-                <a href="estimator.html" class="hidden lg:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent border border-accent/30 px-4 py-2 rounded-full hover:bg-accent/10 transition">
-                    <i class="fa-solid fa-calculator"></i> Cost Calculator
-                </a>
-                <a href="index.html#contact" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-accent text-darkbg font-semibold hover:bg-sky-400 transition">
+                <a href="#contact" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-accent text-darkbg font-semibold hover:bg-sky-400 transition text-sm">
                     Let's Talk
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.07)_0,transparent_70%)]"></div>
-        <div class="max-w-4xl mx-auto text-center z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cardbg border border-gray-800 mb-6">
-                <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
-                <span class="text-xs uppercase tracking-widest text-gray-400">Custom Software & Web Development</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-                Building Digital Infrastructure & <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Scalable Web Solutions</span>
+    <!-- HERO SECTION WITH ROTATING CARDS & DETAILED TITLE -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 px-6 overflow-hidden bg-darkbg">
+        
+        <!-- Header Text -->
+        <div class="max-w-3xl mx-auto text-center z-20 mb-12">
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-[1.2]">
+                Crafting high-performance <br>
+                <span class="font-serif-title italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-accent via-sky-300 to-indigo-400">websites built for scale</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                We transform your ideas into robust, lightning-fast, and custom-coded digital platforms that build immediate customer trust.
+            <p class="text-sm text-gray-400 max-w-xl mx-auto">
+                Explore our custom-engineered web solutions, built with clean architecture and pixel-perfect UI designs.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projects" class="px-8 py-4 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition shadow-lg shadow-sky-500/20">
-                    Explore Our Work
-                </a>
-                <a href="estimator.html" class="px-8 py-4 rounded-xl bg-cardbg border border-gray-800 hover:border-accent transition font-medium flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-calculator text-accent"></i> Estimate Project Cost
-                </a>
+        </div>
+
+        <!-- 3D Scrolling Carousel Track (a.jpg, b.jpg, c.jpg, d.jpg) -->
+        <div class="carousel-container w-full max-w-7xl py-6">
+            <div class="carousel-track">
+                <!-- Set 1 -->
+                <div class="carousel-card group">
+                    <img src="a.jpg" alt="Project A">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Project Alpha Showcase</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="b.jpg" alt="Project B">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Inventory System Module</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="c.jpg" alt="Project C">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">E-Commerce Mobile App</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="d.jpg" alt="Project D">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Cloud Infrastructure Dashboard</div>
+                </div>
+
+                <!-- Set 2 (Infinite Loop Seamless Duplicate) -->
+                <div class="carousel-card group">
+                    <img src="a.jpg" alt="Project A">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Project Alpha Showcase</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="b.jpg" alt="Project B">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Inventory System Module</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="c.jpg" alt="Project C">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">E-Commerce Mobile App</div>
+                </div>
+                <div class="carousel-card group">
+                    <img src="d.jpg" alt="Project D">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold">Cloud Infrastructure Dashboard</div>
+                </div>
             </div>
         </div>
+
     </header>
 
+
+
+
+
     <!-- TECH STACK TICKER -->
-    <div class="py-10 border-y border-gray-800/60 bg-darkbg/40 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 text-center text-xs tracking-widest text-gray-500 uppercase mb-4">Core Technologies We Master</div>
-        <div class="flex justify-center gap-8 md:gap-16 text-gray-400 text-lg font-semibold flex-wrap px-6">
-            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-node-js text-2xl"></i> Node.js</span>
-            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-react text-2xl"></i> React / Next.js</span>
-            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-2xl"></i> Flutter</span>
-            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-database text-2xl"></i> SQL & Databases</span>
-            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-network-wired text-2xl"></i> Networking & APIs</span>
+    <div class="py-10 border-y border-gray-800/60 bg-cardbg overflow-hidden relative z-20">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs tracking-widest text-gray-400 uppercase mb-4 font-semibold">Core Technologies We Master</div>
+        <div class="flex justify-center gap-8 md:gap-16 text-gray-300 text-lg font-semibold flex-wrap px-6">
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-node-js text-2xl text-accent"></i> Node.js</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-brands fa-react text-2xl text-accent"></i> React / Next.js</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-2xl text-accent"></i> Flutter</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-database text-2xl text-accent"></i> SQL & Databases</span>
+            <span class="hover:text-accent transition flex items-center gap-2"><i class="fa-solid fa-network-wired text-2xl text-accent"></i> Networking & APIs</span>
         </div>
     </div>
 
     <!-- WHY ASTECHSOLUTION SECTION -->
-    <section class="py-24 px-6 max-w-7xl mx-auto">
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto animate-on-scroll ">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-6xl font-serif-title italic tracking-wide text-white mb-4">
                 Why <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">astechsolution</span>
@@ -187,8 +261,8 @@
         </div>
     </section>
 
-    <!-- OUR SERVICES SECTION (BRIGHT & CLEAR BACKGROUND IMAGES) -->
-    <section id="services" class="py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-gray-800/60 overflow-hidden">
+    <!-- OUR SERVICES SECTION -->
+    <section id="services" class="py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-gray-800/60 overflow-hidden animate-on-scroll">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-6xl font-serif-title italic tracking-wide text-white mb-4">
                 Our <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Services</span>
@@ -197,10 +271,8 @@
             <h3 class="text-xs md:text-sm uppercase tracking-[0.25em] text-accent font-bold mt-6">What We Provide</h3>
         </div>
 
-        <!-- Tilted Cards Grid Layout (5 Items with High Brightness Images) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center justify-center max-w-6xl mx-auto">
-            
-            <!-- Card 1: Web Design Services -->
+            <!-- Card 1 -->
             <a href="web-design.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:-rotate-3">
                 <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
@@ -208,8 +280,7 @@
                     <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Web Design Services</h4>
                 </div>
             </a>
-
-            <!-- Card 2: Mobile App Development -->
+            <!-- Card 2 -->
             <a href="mobile-app.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-2">
                 <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
@@ -217,8 +288,7 @@
                     <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Mobile App Development</h4>
                 </div>
             </a>
-
-            <!-- Card 3: E-Commerce -->
+            <!-- Card 3 -->
             <a href="ecommerce.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:-rotate-2">
                 <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
@@ -226,8 +296,7 @@
                     <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">E-Commerce</h4>
                 </div>
             </a>
-
-            <!-- Card 4: Backend Development -->
+            <!-- Card 4 -->
             <a href="backend.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-1">
                 <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
@@ -235,8 +304,7 @@
                     <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Backend Development</h4>
                 </div>
             </a>
-
-            <!-- Card 5: Domain and Web Hosting Services -->
+            <!-- Card 5 -->
             <a href="estimator.html" class="group relative h-96 rounded-2xl overflow-hidden border border-gray-800 bg-cardbg shadow-2xl transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:rotate-0 lg:rotate-3">
                 <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/40 to-transparent z-10"></div>
@@ -244,62 +312,122 @@
                     <h4 class="font-serif-title italic text-xl md:text-2xl text-white group-hover:text-accent transition drop-shadow-md">Domain and Web Hosting Services</h4>
                 </div>
             </a>
-
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto border-t border-gray-800/60">
+    <!-- FAQ SECTION -->
+    <section class="py-24 px-6 max-w-5xl mx-auto border-t border-gray-800/60 animate-on-scroll">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Explore some of our recent development builds and architectural solutions.</p>
+            <h2 class="text-4xl md:text-5xl font-serif-title italic tracking-wide text-white mb-4">
+    Frequently Asked <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Questions</span>
+</h2>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm">Everything you need to know about our web development and design services.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Project 1 -->
-            <div class="rounded-2xl bg-cardbg border border-gray-800 overflow-hidden group">
-                <div class="h-56 bg-gray-900 relative overflow-hidden flex items-center justify-center">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <span class="text-gray-500 font-mono tracking-widest text-sm">Project Preview Mockup</span>
-                </div>
-                <div class="p-8">
-                    <span class="text-xs uppercase tracking-widest text-accent font-semibold">Mobile App Platform</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-3">RenaiReward System</h3>
-                    <p class="text-gray-400 text-sm mb-6">A loyalty and engagement mobile architecture built with Flutter and local state persistence to reward user interaction.</p>
-                    <div class="flex gap-2 flex-wrap mb-6">
-                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Flutter</span>
-                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">SQLite</span>
-                    </div>
-                    <a href="#contact" class="text-sm font-semibold text-accent hover:underline flex items-center gap-2">Request Case Study <i class="fa-solid fa-arrow-right text-xs"></i></a>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq1', 'icon1')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">What do web development companies do?</span>
+                    <i id="icon1" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq1" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    Web development companies design, build, and maintain websites and web applications. We handle everything from frontend user interfaces and user experience (UI/UX) to robust backend architecture, database integration, security setups, and deployment so your business has a high-performing digital footprint.
                 </div>
             </div>
-            <!-- Project 2 -->
-            <div class="rounded-2xl bg-cardbg border border-gray-800 overflow-hidden group">
-                <div class="h-56 bg-gray-900 relative overflow-hidden flex items-center justify-center">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <span class="text-gray-500 font-mono tracking-widest text-sm">Project Preview Mockup</span>
-                </div>
-                <div class="p-8">
-                    <span class="text-xs uppercase tracking-widest text-accent font-semibold">Web & Network Architecture</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-3">Enterprise Multi-Server Chat</h3>
-                    <p class="text-gray-400 text-sm mb-6">A real-time communication platform utilizing Node.js, Socket.io, and Redis with port failover capabilities.</p>
-                    <div class="flex gap-2 flex-wrap mb-6">
-                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Node.js</span>
-                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Socket.io</span>
-                        <span class="px-3 py-1 rounded-full bg-darkbg text-xs border border-gray-800">Redis</span>
+
+            <!-- FAQ Item 2 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq2', 'icon2')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">What are the stages of custom web development?</span>
+                    <i id="icon2" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq2" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4 space-y-4">
+                    <div>
+                        <strong class="text-white block mb-1">a. Stage 1</strong>
+                        <p>The first step in web development process is to understand your unique ideas and requirement. We will perform research and go through a proposal showcase to you. Once the information is being gathered and confirmed, we will proceed to the next web development process.</p>
                     </div>
-                    <a href="#contact" class="text-sm font-semibold text-accent hover:underline flex items-center gap-2">Request Case Study <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    <div>
+                        <strong class="text-white block mb-1">b. Stage 2</strong>
+                        <p>The next step is mock-up presentation. You are able to visualize the overall look and feel of the website. This step helps to fasten the web development process.</p>
+                    </div>
+                    <div>
+                        <strong class="text-white block mb-1">c. Stage 3</strong>
+                        <p>After the mock-up is being approved, we will kick-start the web development. Our team will provide a weekly progress update to keep you informed.</p>
+                    </div>
+                    <div>
+                        <strong class="text-white block mb-1">d. Stage 4</strong>
+                        <p>Once the web development is completed, Our internal QA team will perform testing on the overall website and make necessary changes. We will pass the development to you for UAT (user acceptance testing) together with training session.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq3', 'icon3')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">What is a fully custom web development?</span>
+                    <i id="icon3" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq3" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    Fully custom web development means building a website or web application entirely from scratch based on your unique business needs, specifications, and branding—without relying on rigid pre-made templates or restrictive plugins. This ensures maximum performance, scalability, and unique user experiences.
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq4', 'icon4')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">What are the benefits of working with a web developer or designer company in Malaysia?</span>
+                    <i id="icon4" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq4" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    Partnering with a local development company provides the advantage of clear communication, deep understanding of the local market landscape and consumer behavior, easier alignment on time zones, and tailored digital strategies designed to help your business stand out regionally and globally.
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq5', 'icon5')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">What support can I expect from your web development services after launching my website?</span>
+                    <i id="icon5" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq5" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    We offer continuous post-launch support and maintenance to ensure your platform remains secure, up-to-date, and fully optimized. Our dedicated team is ready to assist you with system updates, technical troubleshooting, and performance enhancements whenever needed.
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq6', 'icon6')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">How long does it typically take for a custom website development?</span>
+                    <i id="icon6" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq6" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    The timeline for a custom website development project varies depending on the scope, complexity, and specific feature requirements. Typically, standard projects range from a few weeks to a couple of months, during which we provide structured milestones and regular progress updates.
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="bg-cardbg border border-gray-800 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq('faq7', 'icon7')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-800/40 transition">
+                    <span class="font-semibold text-lg text-white">Why is responsive website development important for my business, and how can you help?</span>
+                    <i id="icon7" class="fa-solid fa-arrow-right text-accent transition-transform duration-300"></i>
+                </button>
+                <div id="faq7" class="hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/60 pt-4">
+                    Responsive web design ensures that your website adapts seamlessly to all screen sizes—whether smartphones, tablets, or desktop computers. This is critical for capturing mobile traffic, improving search engine optimization (SEO), and delivering an optimal user experience. We build fully responsive interfaces from the ground up to ensure your brand looks exceptional across every device.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- DEVELOPMENT PROCESS SECTION -->
-    <section id="process" class="py-24 px-6 max-w-7xl mx-auto border-t border-gray-800/60">
+    <section id="process" class="py-24 px-6 max-w-7xl mx-auto border-t border-gray-800/60 animate-on-scroll">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Development Lifecycle</h2>
+           <h2 class="text-3xl md:text-5xl font-serif-title italic font-normal tracking-tight mb-4 text-white">
+    Our Development <span class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Lifecycle</span>
+</h2>
             <p class="text-gray-400 max-w-xl mx-auto">Transparent milestones to ensure project success from day one.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
                 <span class="text-accent font-mono font-bold text-xl">01</span>
                 <h4 class="font-bold text-lg mt-3 mb-2">Requirement</h4>
@@ -317,54 +445,136 @@
             </div>
             <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
                 <span class="text-accent font-mono font-bold text-xl">04</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Testing</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Rigorous QA checks, bug fixing, and user acceptance testing (UAT).</p>
+            </div>
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">05</span>
                 <h4 class="font-bold text-lg mt-3 mb-2">Deployment</h4>
                 <p class="text-gray-400 text-xs leading-relaxed">Launching live to production with complete handover support.</p>
             </div>
+            <div class="p-6 rounded-xl bg-cardbg border border-gray-800">
+                <span class="text-accent font-mono font-bold text-xl">06</span>
+                <h4 class="font-bold text-lg mt-3 mb-2">Maintenance</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Ongoing system updates, security monitoring, and technical support.</p>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 px-6 max-w-3xl mx-auto border-t border-gray-800/60">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Together</h2>
-            <p class="text-gray-400">Ready to start your digital journey? Send us a message below.</p>
-        </div>
-        <form onsubmit="handleSubmit(event)" class="space-y-6 bg-cardbg p-8 md:p-10 rounded-2xl border border-gray-800">
-            <div>
-                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Your Name</label>
-                <input type="text" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
-            </div>
-            <div>
-                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Email Address</label>
-                <input type="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
-            </div>
-            <div>
-                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Project Details</label>
-                <textarea rows="4" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition"></textarea>
-            </div>
-            <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition shadow-lg shadow-sky-500/20">
-                Send Message
-            </button>
-        </form>
-    </section>
+    <!-- GET IN TOUCH & MULTI-COLUMN FOOTER SECTION -->
+    <footer id="contact" class="bg-darkbg text-gray-400 border-t border-gray-800/60 pt-24 pb-12 relative overflow-hidden animate-on-scroll">
+        
+        <!-- Background Ambient Glow for Elegance -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-accent/5 blur-[120px] pointer-events-none rounded-full"></div>
 
-    <!-- FOOTER -->
-    <footer class="py-8 border-t border-gray-800 text-center text-xs text-gray-500">
-        <p>&copy; 2026 astechsolution. All rights reserved.</p>
+        <!-- Get In Touch Box with Unique Animation & Elegant Font -->
+        <div class="max-w-5xl mx-auto px-6 text-center mb-28 relative z-10">
+            <span class="text-xs uppercase tracking-[0.35em] text-accent font-semibold block mb-3 opacity-90">Inquiries & Collaboration</span>
+            
+            <h2 class="text-3xl md:text-5xl font-serif-title font-semibold tracking-wide uppercase mb-5 text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-200 to-accent animate-pulse">
+    GET IN TOUCH
+</h2>
+            
+            <p class="font-serif-title italic text-gray-300 text-lg md:text-xl mb-10 tracking-wide">
+                "Let us help you in the journey of expanding your business"
+            </p>
+            
+            <a href="mailto:astechsolution@gmail.com" class="inline-flex items-center gap-3 px-12 py-4 rounded-full bg-gradient-to-r from-cardbg via-gray-900 to-cardbg border border-gray-700 text-white font-medium hover:border-accent hover:text-accent transition-all duration-500 shadow-2xl animate-float-btn group">
+                <span>Starts Here</span>
+                <i class="fa-solid fa-arrow-right-long transform group-hover:translate-x-1.5 transition-transform text-accent"></i>
+            </a>
+        </div>
+
+        <!-- Multi-Column Footer Links -->
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-gray-800/80 text-sm relative z-10">
+            <div class="space-y-4">
+                <a href="index.html" class="text-2xl font-bold tracking-wider text-white block">
+                    astech<span class="text-accent">solution</span>
+                </a>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    astechsolution established with a group of digital enthusiasts who has great passion towards programming works. We called ourselves as "programming factory" as we produced websites or apps every year to help businesses transform from offline to online.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">ASTECHSOLUTION</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="index.html" class="hover:text-accent transition">About</a></li>
+                    <li><a href="#services" class="hover:text-accent transition">Works</a></li>
+                    <li><a href="#contact" class="hover:text-accent transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-accent transition">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">SERVICES</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="web-design.html" class="hover:text-accent transition">Web Design Services</a></li>
+                    <li><a href="mobile-app.html" class="hover:text-accent transition">Mobile App Development</a></li>
+                    <li><a href="ecommerce.html" class="hover:text-accent transition">E-Commerce</a></li>
+                    <li><a href="backend.html" class="hover:text-accent transition">Backend Development</a></li>
+                    <li><a href="estimator.html" class="hover:text-accent transition">Domain and Web Hosting Services</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">CONTACT</h4>
+                <ul class="space-y-3 text-xs">
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-location-dot text-accent mt-1"></i>
+                        <span>Eco Majestic, Semenyih, Selangor</span>
+                    </li>
+                    <li class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-phone text-accent"></i>
+                        <a href="tel:+601137458216" class="hover:text-accent transition">011-37458216</a> / <a href="tel:+601133031316" class="hover:text-accent transition">011-33031316</a>
+                    </li>
+                    <li class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-envelope text-accent"></i>
+                        <a href="mailto:astechsolution@gmail.com" class="hover:text-accent transition">astechsolution@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright Bottom Bar -->
+        <div class="max-w-7xl mx-auto px-6 pt-8 text-center text-xs text-gray-500 relative z-10">
+            <p>&copy; 2026 astechsolution. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- INTERACTION SCRIPT -->
+    <!-- JavaScript for FAQ toggle -->
     <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent Successfully!';
-            btn.classList.remove('bg-accent', 'hover:bg-sky-400');
-            btn.classList.add('bg-emerald-500', 'text-white');
-            setTimeout(() => {
-                e.target.reset();
-            }, 3000);
+        function toggleFaq(faqId, iconId) {
+            const content = document.getElementById(faqId);
+            const icon = document.getElementById(iconId);
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-90');
         }
     </script>
+    <script>
+    // Skrip Animasi Scroll Masuk
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    });
+</script>
+    
 </body>
 </html>
