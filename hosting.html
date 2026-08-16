@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain and Web Hosting Services | astechsolution</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0f1d',
+                        cardbg: '#131b2e',
+                        accent: '#38bdf8',
+                    },
+                    fontFamily: {
+                        'serif-title': ['Playfair Display', 'Georgia', 'serif'],
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 4s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-accent selection:text-darkbg">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
+                astech<span class="text-accent">solution</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-accent transition">Home</a>
+                <a href="index.html#about" class="hover:text-accent transition">About</a>
+                <a href="index.html#services" class="hover:text-accent transition">Services</a>
+                <a href="index.html#process" class="hover:text-accent transition">Process</a>
+                <a href="estimator.html" class="hover:text-accent transition">Cost Estimator</a>
+            </div>
+            <a href="index.html" class="text-xs text-gray-400 hover:text-white transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT SECTION -->
+    <main class="pt-60 pb-24 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- LEFT COLUMN: Gambar Hosting (Besar sikit & Ada Animasi Bergerak-gerak) -->
+            <div class="flex justify-center">
+                <div class="bg-cardbg border border-gray-800 rounded-2xl p-5 shadow-2xl overflow-hidden group w-full max-w-lg animate-float-slow">
+                    <img src="hosting.jpg" alt="Domain and Web Hosting Services" class="w-full h-auto rounded-xl object-cover transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Tajuk & Huraian -->
+            <div>
+                <h1 class="text-4xl md:text-5xl font-serif-title italic text-white mb-6">
+                    Domain & Web Hosting
+                </h1>
+                
+                <div class="space-y-4 text-gray-300 text-sm md:text-base leading-relaxed">
+                    <p>
+                        Securing a reliable domain name and high-performance web hosting is the backbone of any successful digital presence. As a <strong>web solutions provider</strong>, we ensure your website stays fast, secure, and online 24/7.
+                    </p>
+                    <p>
+                        We handle everything from domain registration, SSL security certificates, DNS configurations, to robust cloud server hosting setup tailored precisely to your business scale.
+                    </p>
+                    <p>
+                        Enjoy seamless uptime, fast page loading speeds, automated database backups, and professional corporate email hosting connected directly to your custom domain.
+                    </p>
+                </div>
+
+                <!-- NAVIGATION FOOTER ARROWS -->
+                <div class="mt-10 pt-6 border-t border-gray-800 flex justify-between items-center text-sm">
+                    <a href="backend.html" class="text-gray-400 hover:text-accent transition flex items-center gap-2">
+    <i class="fa-solid fa-angle-left"></i> <strong class="font-bold">Backend Development</strong>
+</a>
+                    <a href="index.html#services" class="text-accent hover:underline font-semibold flex items-center gap-2">
+                        All Services <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+  
+   
+
+</body>
+</html>
