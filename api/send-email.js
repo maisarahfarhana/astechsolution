@@ -1,3 +1,7 @@
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export default async function handler(req, res) {
 
     if (req.method !== "POST") {
@@ -5,7 +9,6 @@ export default async function handler(req, res) {
             message: "Method not allowed"
         });
     }
-
 
     const {
         client_name,
@@ -18,32 +21,54 @@ export default async function handler(req, res) {
 
 
     const emailContent = `
-New Website Inquiry - AS TechSolution
+        <h2>New Website Inquiry - AS TechSolution</h2>
 
-Name:
-${client_name}
+        <p><b>Name:</b> ${client_name}</p>
 
-Phone:
-${client_phone}
+        <p><b>Phone:</b> ${client_phone}</p>
 
-Project Type:
-${project_type}
+        <p><b>Project Type:</b> ${project_type}</p>
 
-Estimated Budget:
-${estimated_total}
+        <p><b>Estimated Budget:</b> ${estimated_total}</p>
 
-Project Scope:
-${project_scope}
+        <p><b>Project Scope:</b><br>
+        ${project_scope}</p>
 
-Design Request:
-${design_request}
+        <p><b>Design Request:</b><br>
+        ${design_request}</p>
     `;
 
 
-    // temporary response test
-    return res.status(200).json({
-        success: true,
-        message: emailContent
-    });
+    try {
+
+        const data = await resend.emails.send({
+
+            from: "AS TechSolution <onboarding@resend.dev>",
+
+            to: [
+                "astechsolution.my@gmail.com"
+            ],
+
+            subject: "New Website Inquiry",
+
+            html: emailContent
+
+        });
+
+
+        return res.status(200).json({
+            success: true,
+            data
+        });
+
+
+    } catch (error) {
+
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });
+
+    }
 
 }
