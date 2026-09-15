@@ -1,302 +1,982 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cost Estimator | astechsolution</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkbg: '#0a0f1d',
-                        cardbg: '#131b2e',
-                        accent: '#38bdf8',
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cost Estimator | AS TechSolution</title>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script>
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+colors: {
+
+darkbg:"#0a0f1d",
+cardbg:"#131b2e",
+accent:"#38bdf8"
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-accent selection:text-darkbg">
-
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
-                astech<span class="text-accent">solution</span>
-            </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="index.html" class="hover:text-accent transition">Home</a>
-                <a href="index.html#about" class="hover:text-accent transition">About</a>
-                <a href="index.html#services" class="hover:text-accent transition">Services</a>
-                <a href="index.html#process" class="hover:text-accent transition">Process</a>
-                <a href="estimator.html" class="text-accent font-semibold">Cost Estimator</a>
-            </div>
-            <a href="index.html#contact" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-accent text-darkbg font-semibold hover:bg-sky-400 transition">
-                Let's Talk
-            </a>
-        </div>
-    </nav>
-
-    <!-- ESTIMATOR HEADER -->
-    <header class="pt-32 pb-8 px-6 max-w-4xl mx-auto text-center">
-        <span class="text-xs uppercase tracking-widest text-accent font-semibold">Interactive Pricing & Planning Tool</span>
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 mb-4">
-            Project Scope & <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-indigo-400">Cost Estimator</span>
-        </h1>
-        <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
-            Choose a low-price package, share your preferred design, and get an instant estimate from AS Tech Solution.
-        </p>
-    </header>
-
-    <!-- ESTIMATOR CALCULATOR CONTAINER -->
-    <main class="max-w-4xl mx-auto px-6 pb-24">
-       <form id="estimatorForm"
-class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-            
-            <!-- OPTIONS SELECTION (2 Columns) -->
-            <div class="md:col-span-2 space-y-8">
-                
-                <!-- STEP 1: Project Scope Description -->
-                <div>
-                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-2">1. Project Scope & Objectives</label>
-                    <p class="text-xs text-gray-500 mb-3">Briefly describe what you want to build (e.g., goals, target audience, core features).</p>
-                    <textarea id="projectScopeInput" name="project_scope" rows="3" placeholder="e.g., I want an inventory system for hotel supplies with secure admin login..." class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"></textarea>
-                </div>
-
-                <!-- STEP 1B: Design Request -->
-                <div>
-                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-2">Design Request / Preferred Style</label>
-                    <p class="text-xs text-gray-500 mb-3">Share your own design, example layout, or visual preferences so AS Tech Solution can build it as requested.</p>
-                    <textarea id="designRequestInput" name="design_request" rows="3" placeholder="e.g., I have a design concept in Figma or want a modern dashboard with blue accents..." class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"></textarea>
-                </div>
-
-                <!-- STEP 2: Project Type (App / Website / Landing Page) -->
-                <div>
-                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-3">2. Select Platform / Solution Type</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" name="project_type" value="Landing Page (RM 1,200)" onchange="calculateTotal()" class="accent-sky-400 mr-2">
-                                <span class="font-semibold text-xs">Landing Page</span>
-                            </div>
-                            <span class="text-xs text-gray-500">Low price from RM 1,200</span>
-                        </label>
-                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" name="project_type" value="Full Website (RM 2,500)" checked onchange="calculateTotal()" class="accent-sky-400 mr-2">
-                                <span class="font-semibold text-xs">Full Website</span>
-                            </div>
-                            <span class="text-xs text-gray-500">Low price from RM 2,500</span>
-                        </label>
-                        <label class="flex flex-col p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" name="project_type" value="Mobile App (RM 4,500)" onchange="calculateTotal()" class="accent-sky-400 mr-2">
-                                <span class="font-semibold text-xs">Mobile App</span>
-                            </div>
-                            <span class="text-xs text-gray-500">Low price from RM 4,500</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- STEP 3: Add-on Features -->
-                <div>
-                    <label class="block text-sm font-bold uppercase tracking-wider text-gray-300 mb-3">3. Additional Features</label>
-                    <div class="space-y-3">
-                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center">
-                                <input type="checkbox" name="addons[]" value="Custom Backend & Database (+RM 800)" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4" data-price="800">
-                                <span class="text-sm font-medium">Custom Backend & Database (Node.js/SQL)</span>
-                            </div>
-                            <span class="text-xs font-mono text-accent">+RM 800</span>
-                        </label>
-                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center">
-                                <input type="checkbox" name="addons[]" value="Cross-Platform Support (+RM 1,200)" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4" data-price="1200">
-                                <span class="text-sm font-medium">Cross-Platform Support (Flutter)</span>
-                            </div>
-                            <span class="text-xs font-mono text-accent">+RM 1,200</span>
-                        </label>
-                        <label class="flex items-center justify-between p-4 rounded-xl bg-darkbg border border-gray-800 cursor-pointer hover:border-accent transition">
-                            <div class="flex items-center">
-                                <input type="checkbox" name="addons[]" value="Advanced UI Animations (+RM 500)" onchange="calculateTotal()" class="feature-checkbox accent-sky-400 mr-3 w-4 h-4" data-price="500">
-                                <span class="text-sm font-medium">Advanced UI Animations & Effects</span>
-                            </div>
-                            <span class="text-xs font-mono text-accent">+RM 500</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- STEP 4: Contact Info (Nama & No Telefon) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
-                        <input type="text" id="clientNameInput" name="client_name" placeholder="e.g., Sarah" class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Phone / WhatsApp Number</label>
-                        <input type="text" id="clientPhoneInput" name="client_phone" placeholder="e.g., 011-37458216" class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition" required>
-                    </div>
-                </div>
-
-            </div>
-<!-- STEP 4: Contact Info -->
-
-<div class="space-y-4 pt-2">
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
 
-        <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
-                Your Name
-            </label>
+<body class="bg-darkbg text-white">
 
-            <input 
-            type="text"
-            id="clientNameInput"
-            name="client_name"
-            placeholder="e.g., Sarah"
-            class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
-            required>
 
-        </div>
+<!-- NAVBAR -->
+
+<nav class="fixed top-0 w-full z-50 bg-darkbg/90 backdrop-blur border-b border-gray-800">
+
+
+<div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+
+
+<a href="index.html"
+class="text-2xl font-bold">
+
+astech<span class="text-accent">solution</span>
+
+</a>
 
 
 
-        <div>
-
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
-                Phone / WhatsApp Number
-            </label>
+<div class="hidden md:flex gap-8 text-sm text-gray-300">
 
 
-            <input 
-            type="text"
-            id="clientPhoneInput"
-            name="client_phone"
-            placeholder="e.g., 011-37458216"
-            class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
-            required>
+<a href="index.html">
+Home
+</a>
 
 
-        </div>
+<a href="index.html#services">
+Services
+</a>
 
 
-    </div>
+<a href="estimator.html"
+class="text-accent">
 
+Cost Estimator
 
-
-    <div>
-
-
-        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
-            Email Address
-        </label>
-
-
-        <input
-        type="email"
-        id="clientEmailInput"
-        name="client_email"
-        placeholder="e.g., customer@gmail.com"
-        class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
-        required>
-
-
-    </div>
+</a>
 
 
 </div>
-            <!-- SUMMARY BOX (1 Column) -->
-            <div class="bg-darkbg border border-gray-800 rounded-xl p-6 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-4">Estimated Investment</h3>
-                    <div class="text-3xl font-extrabold text-accent mb-2" id="totalPrice">RM 2,500</div>
-                    <input type="hidden" id="totalPriceInput" name="estimated_total" value="RM 2,500">
-                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Low-price estimate based on your selected scope and platform. You can provide your own design and request what interests you — AS Tech Solution will build it for you.</p>
-                </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl bg-accent text-darkbg font-bold hover:bg-sky-400 transition text-sm shadow-lg shadow-sky-500/10 cursor-pointer">
-                    Send Inquiry With Design Request
-                </button>
-            </div>
-
-        </form>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="py-8 border-t border-gray-800 text-center text-xs text-gray-500">
-        <p>&copy; 2026 astechsolution. All rights reserved.</p>
-    </footer>
-
-    <!-- ESTIMATOR SCRIPT -->
-    <script>
-
-document.getElementById("estimatorForm").addEventListener("submit", async function(e){
-
-    e.preventDefault();
 
 
-    const formData = new FormData(this);
+
+</div>
 
 
-    const data = {
-
-        client_name: formData.get("client_name"),
-        client_phone: formData.get("client_phone"),
-        project_scope: formData.get("project_scope"),
-        design_request: formData.get("design_request"),
-        project_type: formData.get("project_type"),
-        estimated_total: formData.get("estimated_total")
-
-    };
+</nav>
 
 
-    console.log("Sending:", data);
 
 
-    try {
 
-        const response = await fetch("/api/send-email", {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body: JSON.stringify(data)
-
-        });
+<!-- HEADER -->
 
 
-        const result = await response.json();
+<section class="pt-32 pb-10 px-6 text-center">
 
 
-        console.log(result);
+<h1 class="text-4xl md:text-5xl font-bold">
+
+Project Scope &
+
+<span class="text-accent">
+
+Cost Estimator
+
+</span>
 
 
-        alert("Thank you! Your inquiry has been sent.");
-
-        this.reset();
+</h1>
 
 
-    } catch(error){
 
-        console.error(error);
+<p class="text-gray-400 mt-4">
 
-        alert("Failed to send inquiry.");
+Plan your website, application or digital solution with AS TechSolution.
 
-    }
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FORM -->
+
+
+<form id="estimatorForm"
+
+class="max-w-6xl mx-auto px-6 pb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+
+
+
+
+<!-- LEFT AREA -->
+
+
+<div class="md:col-span-2 space-y-8">
+
+
+
+
+
+<!-- PROJECT SCOPE -->
+
+
+<div>
+
+
+<h2 class="font-bold text-lg mb-3">
+
+1. Project Scope & Objectives
+
+</h2>
+
+
+<textarea
+
+name="project_scope"
+
+rows="4"
+
+placeholder="Describe your project requirements..."
+
+class="w-full bg-darkbg border border-gray-800 rounded-xl p-4 focus:border-accent outline-none"
+
+required></textarea>
+
+
+</div>
+
+
+
+
+
+
+<!-- DESIGN -->
+
+
+<div>
+
+
+<h2 class="font-bold text-lg mb-3">
+
+Design Request / Preferred Style
+
+</h2>
+
+
+<textarea
+
+name="design_request"
+
+rows="4"
+
+placeholder="Example: Modern design, dashboard style, blue theme..."
+
+class="w-full bg-darkbg border border-gray-800 rounded-xl p-4 focus:border-accent outline-none">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PLATFORM -->
+
+
+<div>
+
+
+<h2 class="font-bold text-lg mb-4">
+
+2. Select Platform
+
+</h2>
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+
+
+<label class="border border-gray-800 rounded-xl p-5 cursor-pointer hover:border-accent">
+
+
+<input
+
+type="radio"
+
+name="project_type"
+
+value="Landing Page"
+
+data-price="1200"
+
+class="platform">
+
+
+<p class="font-bold mt-3">
+
+Landing Page
+
+</p>
+
+
+<p class="text-sm text-gray-400">
+
+From RM1,200
+
+</p>
+
+
+</label>
+
+
+
+
+
+
+<label class="border border-gray-800 rounded-xl p-5 cursor-pointer hover:border-accent">
+
+
+<input
+
+type="radio"
+
+name="project_type"
+
+value="Full Website"
+
+data-price="2500"
+
+class="platform"
+
+checked>
+
+
+<p class="font-bold mt-3">
+
+Full Website
+
+</p>
+
+
+<p class="text-sm text-gray-400">
+
+From RM2,500
+
+</p>
+
+
+</label>
+
+
+
+
+
+
+<label class="border border-gray-800 rounded-xl p-5 cursor-pointer hover:border-accent">
+
+
+<input
+
+type="radio"
+
+name="project_type"
+
+value="Mobile App"
+
+data-price="4500"
+
+class="platform">
+
+
+<p class="font-bold mt-3">
+
+Mobile App
+
+</p>
+
+
+<p class="text-sm text-gray-400">
+
+From RM4,500
+
+</p>
+
+
+</label>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ADDONS -->
+
+
+<div>
+
+
+<h2 class="font-bold text-lg mb-4">
+
+3. Additional Features
+
+</h2>
+
+
+
+<div class="space-y-3">
+
+
+
+<label class="flex justify-between items-center border border-gray-800 rounded-xl p-4">
+
+
+<div>
+
+<input
+
+type="checkbox"
+
+class="addon mr-2"
+
+data-price="800"
+
+value="Backend Database">
+
+
+Custom Backend & Database
+
+</div>
+
+
+<span class="text-accent">
+
++RM800
+
+</span>
+
+
+</label>
+
+
+
+
+
+<label class="flex justify-between items-center border border-gray-800 rounded-xl p-4">
+
+
+<div>
+
+<input
+
+type="checkbox"
+
+class="addon mr-2"
+
+data-price="1200"
+
+value="Flutter App">
+
+
+Cross Platform Support
+
+</div>
+
+
+<span class="text-accent">
+
++RM1,200
+
+</span>
+
+
+</label>
+
+
+
+
+
+<label class="flex justify-between items-center border border-gray-800 rounded-xl p-4">
+
+
+<div>
+
+<input
+
+type="checkbox"
+
+class="addon mr-2"
+
+data-price="500"
+
+value="UI Animation">
+
+
+Advanced UI Animation
+
+</div>
+
+
+<span class="text-accent">
+
++RM500
+
+</span>
+
+
+</label>
+
+
+</div>
+
+
+</div>
+<!-- CUSTOMER INFORMATION -->
+
+<div>
+
+
+<h2 class="font-bold text-lg mb-4">
+
+4. Your Information
+
+</h2>
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+
+<div>
+
+<label class="block text-sm text-gray-400 mb-2">
+Name
+</label>
+
+
+<input
+
+type="text"
+
+name="client_name"
+
+placeholder="Your name"
+
+class="w-full bg-darkbg border border-gray-800 rounded-xl p-4 focus:border-accent outline-none"
+
+required>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<label class="block text-sm text-gray-400 mb-2">
+Phone / WhatsApp
+</label>
+
+
+<input
+
+type="text"
+
+name="client_phone"
+
+placeholder="0123456789"
+
+class="w-full bg-darkbg border border-gray-800 rounded-xl p-4 focus:border-accent outline-none"
+
+required>
+
+
+</div>
+
+
+
+
+<div class="sm:col-span-2">
+
+
+<label class="block text-sm text-gray-400 mb-2">
+Email Address
+</label>
+
+
+<input
+
+type="email"
+
+name="client_email"
+
+placeholder="customer@gmail.com"
+
+class="w-full bg-darkbg border border-gray-800 rounded-xl p-4 focus:border-accent outline-none"
+
+required>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- RIGHT SUMMARY -->
+
+
+<div
+
+class="bg-darkbg border border-gray-800 rounded-2xl p-6 h-fit sticky top-28">
+
+
+<h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-5">
+
+Estimated Investment
+
+</h3>
+
+
+
+<div
+
+id="totalPrice"
+
+class="text-5xl font-extrabold text-accent mb-4">
+
+RM 2,500
+
+</div>
+
+
+
+<input
+
+type="hidden"
+
+name="estimated_total"
+
+id="estimated_total"
+
+value="RM 2,500">
+
+
+
+<p class="text-gray-400 text-sm leading-relaxed mb-8">
+
+
+This is an estimated price based on your selected platform and features.
+
+Our team will review your requirements and provide the best solution.
+
+
+</p>
+
+
+
+
+<button
+
+type="submit"
+
+class="w-full bg-accent text-darkbg py-4 rounded-xl font-bold hover:bg-sky-300 transition">
+
+
+Send Inquiry
+
+
+</button>
+
+
+
+</div>
+
+
+
+</form>
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<footer class="border-t border-gray-800 py-8 text-center text-sm text-gray-500">
+
+
+© 2026 AS TechSolution. All rights reserved.
+
+
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+
+// ============================
+// PRICE CALCULATION
+// ============================
+
+
+const platformOptions = document.querySelectorAll(".platform");
+
+const addonOptions = document.querySelectorAll(".addon");
+
+
+const totalPrice = document.getElementById("totalPrice");
+
+const estimatedTotal = document.getElementById("estimated_total");
+
+
+
+
+function calculateTotal(){
+
+
+let total = 2500;
+
+
+
+platformOptions.forEach(item=>{
+
+
+if(item.checked){
+
+total = Number(item.dataset.price);
+
+}
 
 
 });
 
+
+
+
+addonOptions.forEach(item=>{
+
+
+if(item.checked){
+
+total += Number(item.dataset.price);
+
+}
+
+
+});
+
+
+
+
+
+let result = "RM " + total.toLocaleString();
+
+
+
+totalPrice.innerHTML = result;
+
+
+estimatedTotal.value = result;
+
+
+
+}
+
+
+
+
+
+platformOptions.forEach(item=>{
+
+item.addEventListener(
+"change",
+calculateTotal
+);
+
+
+});
+
+
+
+
+
+addonOptions.forEach(item=>{
+
+
+item.addEventListener(
+"change",
+calculateTotal
+);
+
+
+});
+
+
+
+calculateTotal();
+
+
+
+
+
+
+
+
+
+
+// ============================
+// SEND TO VERCEL API
+// ============================
+
+
+document
+.getElementById("estimatorForm")
+.addEventListener(
+"submit",
+async function(e){
+
+
+
+e.preventDefault();
+
+
+
+const formData = new FormData(this);
+
+
+
+const data = {
+
+
+client_name:
+
+formData.get("client_name"),
+
+
+
+client_phone:
+
+formData.get("client_phone"),
+
+
+
+client_email:
+
+formData.get("client_email"),
+
+
+
+project_scope:
+
+formData.get("project_scope"),
+
+
+
+design_request:
+
+formData.get("design_request"),
+
+
+
+project_type:
+
+formData.get("project_type"),
+
+
+
+estimated_total:
+
+formData.get("estimated_total")
+
+
+
+};
+
+
+
+
+
+
+try{
+
+
+const response = await fetch(
+
+"/api/send-email",
+
+{
+
+
+method:"POST",
+
+
+headers:{
+
+"Content-Type":
+
+"application/json"
+
+},
+
+
+body:
+
+JSON.stringify(data)
+
+
+}
+
+);
+
+
+
+
+
+
+const result = await response.json();
+
+
+
+console.log(result);
+
+
+
+
+
+
+if(result.success){
+
+
+alert(
+"Thank you! Your inquiry has been sent successfully."
+);
+
+
+
+this.reset();
+
+
+calculateTotal();
+
+
+
+}
+
+else{
+
+
+alert(
+"Failed to send inquiry."
+);
+
+
+}
+
+
+
+
+}
+
+
+
+catch(error){
+
+
+
+console.error(error);
+
+
+alert(
+"Something went wrong. Please try again."
+);
+
+
+}
+
+
+
+
+}
+
+);
+
+
+
 </script>
+
+
+
 </body>
+
+
 </html>
