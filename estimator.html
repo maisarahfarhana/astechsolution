@@ -133,7 +133,7 @@ class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1
                 </div>
 
                 <!-- STEP 4: Contact Info (Nama & No Telefon) -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
                         <input type="text" id="clientNameInput" name="client_name" placeholder="e.g., Sarah" class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition" required>
@@ -145,19 +145,72 @@ class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1
                 </div>
 
             </div>
-<div>
-    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
-        Email Address
-    </label>
+<!-- STEP 4: Contact Info -->
 
-    <input 
-        type="email" 
-        id="clientEmailInput" 
+<div class="space-y-4 pt-2">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+        <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                Your Name
+            </label>
+
+            <input 
+            type="text"
+            id="clientNameInput"
+            name="client_name"
+            placeholder="e.g., Sarah"
+            class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
+            required>
+
+        </div>
+
+
+
+        <div>
+
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                Phone / WhatsApp Number
+            </label>
+
+
+            <input 
+            type="text"
+            id="clientPhoneInput"
+            name="client_phone"
+            placeholder="e.g., 011-37458216"
+            class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
+            required>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div>
+
+
+        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+            Email Address
+        </label>
+
+
+        <input
+        type="email"
+        id="clientEmailInput"
         name="client_email"
         placeholder="e.g., customer@gmail.com"
         class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition"
-        required
-    >
+        required>
+
+
+    </div>
+
 
 </div>
             <!-- SUMMARY BOX (1 Column) -->
