@@ -56,7 +56,9 @@
 
     <!-- ESTIMATOR CALCULATOR CONTAINER -->
     <main class="max-w-4xl mx-auto px-6 pb-24">
-        <form action="https://formspree.io/f/maqrpypp" method="POST" class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-10" onsubmit="return validateForm(event)">
+        <form id="estimatorForm"
+class="bg-cardbg border border-gray-800 rounded-2xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-10"
+onsubmit="return validateForm(event)">
             
             <!-- OPTIONS SELECTION (2 Columns) -->
             <div class="md:col-span-2 space-y-8">
@@ -168,58 +170,20 @@
 
     <!-- ESTIMATOR SCRIPT -->
     <script>
-        function calculateTotal() {
-            let baseVal = 2500;
-            const radios = document.querySelectorAll('input[name="project_type"]');
-            radios.forEach(r => {
-                if(r.checked) {
-                    if(r.value.includes('1,200')) baseVal = 1200;
-                    if(r.value.includes('2,500')) baseVal = 2500;
-                    if(r.value.includes('4,500')) baseVal = 4500;
-                }
-            });
-
-            let total = baseVal;
-            const checkboxes = document.querySelectorAll('.feature-checkbox:checked');
-            checkboxes.forEach(box => {
-                total += parseInt(box.getAttribute('data-price'));
-            });
-
-            const formattedTotal = 'RM ' + total.toLocaleString();
-            document.getElementById('totalPrice').innerText = formattedTotal;
-            document.getElementById('totalPriceInput').value = formattedTotal;
-        }
-
-        function validateForm(event) {
-            const scope = document.getElementById('projectScopeInput').value.trim();
-            const name = document.getElementById('clientNameInput').value.trim();
-            const phone = document.getElementById('clientPhoneInput').value.trim();
-
-            if (!scope) {
-                alert('Please fill in your project scope and objectives before submitting.');
-                document.getElementById('projectScopeInput').focus();
-                event.preventDefault();
-                return false;
-            }
-            if (!name || !phone) {
-                alert('Please fill in your name and phone number so we can reach you.');
-                if (!name) document.getElementById('clientNameInput').focus();
-                else document.getElementById('clientPhoneInput').focus();
-                event.preventDefault();
-                return false;
-            }
-            return true;
-        }
-    </script>
-    <script>
-document.getElementById("contactForm")
-.addEventListener("submit", async function(e){
+      document.getElementById("estimatorForm").addEventListener("submit", async function(e){
 
     e.preventDefault();
 
     const formData = new FormData(this);
 
-    const data = Object.fromEntries(formData);
+    const data = {
+        client_name: formData.get("client_name"),
+        client_phone: formData.get("client_phone"),
+        project_scope: formData.get("project_scope"),
+        design_request: formData.get("design_request"),
+        project_type: formData.get("project_type"),
+        estimated_total: formData.get("estimated_total")
+    };
 
 
     const response = await fetch("/api/send-email", {
@@ -233,14 +197,7 @@ document.getElementById("contactForm")
 
     const result = await response.json();
 
-
-    if(result.success){
-        alert("Thank you! Your inquiry has been sent.");
-        this.reset();
-    }
-    else{
-        alert("Failed to send inquiry.");
-    }
+    console.log(result);
 
 });
 </script>
